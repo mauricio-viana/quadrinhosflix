@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 const INITIAL_VALUES = {
   name: '',
@@ -23,6 +24,20 @@ export default function CadastroCategoria() {
     setCategories([...categories, values]);
     setValues(INITIAL_VALUES);
   };
+
+  React.useEffect(() => {
+    if (window.location.href.includes('localhost')) {
+      const url = 'http://localhost:8080/categories';
+      fetch(url).then(async (response) => {
+        if (response.ok) {
+          const data = await response.json();
+          setCategories(data);
+          return;
+        }
+        throw new Error('Não foi possível pegar os dados');
+      });
+    }
+  }, []);
 
   return (
     <PageDefault>
@@ -52,7 +67,7 @@ export default function CadastroCategoria() {
           value={values.color}
           onChange={handleChangeInput}
         />
-        <button>Cadastrar</button>
+        <Button>Cadastrar</Button>
       </form>
 
       <ul>

@@ -3,11 +3,11 @@ import { VideoCardGroupContainer, Title, ExtraLink } from './styles';
 import VideoCard from './components/VideoCard';
 import Slider, { SliderItem } from './components/Slider';
 
-function Carousel({ ignoreFirstVideo, category }) {
+export default function Carousel({ ignoreFirstVideo, category }) {
   const categoryTitle = category.titulo;
   const categoryColor = category.cor;
   const categoryExtraLink = category.link_extra;
-  const videos = category.videos;
+  const { videos } = category;
   return (
     <VideoCardGroupContainer>
       {categoryTitle && (
@@ -42,5 +42,3 @@ function Carousel({ ignoreFirstVideo, category }) {
     </VideoCardGroupContainer>
   );
 }
-
-export default Carousel;
