@@ -9,8 +9,8 @@ import Table from '../../../components/Table';
 
 const INITIAL_VALUES = {
   titulo: '',
+  cor: '#b6b101',
   descricao: '',
-  cor: '',
 };
 
 export default function CadastroCategoria() {
@@ -24,22 +24,26 @@ export default function CadastroCategoria() {
     });
   }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    categoriasRepository
+      .create({
+        titulo: values.titulo,
+        cor: values.cor,
+        descricao: values.descricao,
+      })
+      .then(() => {
+        setCategorias([...categorias, values]);
+        clearForm();
+      });
+  };
+
   return (
     <PageDefault>
       <div style={{ padding: 50, paddingTop: 0 }}>
-        <h1>
-          Cadastro de Categoria:
-          {values.titulo}
-        </h1>
+        <h1>Cadastro de Categoria</h1>
 
-        <form
-          onSubmit={function handleSubmit(infosDoEvento) {
-            infosDoEvento.preventDefault();
-            categoriasRepository.createCategory(values);
-            setCategorias([...categorias, values]);
-            clearForm();
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <FormField
             label="Nome da Categoria"
             type="text"
@@ -64,7 +68,7 @@ export default function CadastroCategoria() {
             onChange={handleChange}
           />
 
-          <Button>Cadastrar</Button>
+          <Button>Salvar</Button>
         </form>
 
         {categorias.length === 0 && (
@@ -72,12 +76,11 @@ export default function CadastroCategoria() {
             <span>Carregando...</span>
           </div>
         )}
-        {console.log(categorias)}
+
         {categorias.length > 0 && (
           <Table
-            data={categorias.map(({ id, titulo, link_extra }) => {
-              const { text } = link_extra;
-              return { id, titulo, text };
+            data={categorias.map(({ id, titulo, descricao }) => {
+              return { id, titulo, descricao };
             })}
             head={{
               titulo: 'Nome',

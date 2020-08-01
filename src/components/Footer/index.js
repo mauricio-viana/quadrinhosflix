@@ -5,7 +5,7 @@ import { FooterBase } from './styles';
 function Footer() {
   return (
     <FooterBase>
-      <a href="/">
+      <a href="https://github.com/mauricio-viana">
         <img className="Logo" src={Logo} alt="ComicsFlix logo" />
       </a>
       <p>
