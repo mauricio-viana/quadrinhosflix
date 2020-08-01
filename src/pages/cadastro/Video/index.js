@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import useForm from '../../../hooks/useForm';
@@ -7,9 +7,10 @@ import Button from '../../../components/Button';
 import videosRepository from '../../../repositories/videos';
 import categoriasRepository from '../../../repositories/categories';
 
-function CadastroVideo() {
+export default function CadastroVideo() {
   const history = useHistory();
   const [categorias, setCategorias] = useState([]);
+
   const categoryTitles = categorias.map(({ titulo }) => titulo);
   const { handleChange, values } = useForm({
     titulo: 'Video padrão',
@@ -17,35 +18,35 @@ function CadastroVideo() {
     categoria: 'Front End',
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     categoriasRepository.getAll().then((categoriasFromServer) => {
       setCategorias(categoriasFromServer);
     });
   }, []);
 
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+
+    const categoriaEscolhida = categorias.find(
+      (categoria) => categoria.titulo === values.categoria
+    );
+
+    videosRepository
+      .create({
+        titulo: values.titulo,
+        url: values.url,
+        categoriaId: categoriaEscolhida.id,
+      })
+      .then(() => {
+        history.push('/');
+      });
+  };
+
   return (
     <PageDefault>
       <h1>Cadastro de Video</h1>
 
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-
-          const categoriaEscolhida = categorias.find(
-            (categoria) => categoria.titulo === values.categoria
-          );
-
-          videosRepository
-            .create({
-              titulo: values.titulo,
-              url: values.url,
-              categoriaId: categoriaEscolhida.id,
-            })
-            .then(() => {
-              history.push('/');
-            });
-        }}
-      >
+      <form onSubmit={handleSubmitForm}>
         <FormField
           label="Título do Vídeo"
           name="titulo"
@@ -78,5 +79,3 @@ function CadastroVideo() {
     </PageDefault>
   );
 }
-
-export default CadastroVideo;

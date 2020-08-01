@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -7,25 +7,20 @@ import useForm from '../../../hooks/useForm';
 import categoriasRepository from '../../../repositories/categories';
 import Table from '../../../components/Table';
 
-function CadastroCategoria() {
-  const valoresIniciais = {
-    titulo: '',
-    descricao: '',
-    cor: '',
-  };
+const INITIAL_VALUES = {
+  titulo: '',
+  descricao: '',
+  cor: '',
+};
 
-  const { handleChange, values, clearForm } = useForm(valoresIniciais);
+export default function CadastroCategoria() {
+  const { handleChange, values, clearForm } = useForm(INITIAL_VALUES);
 
   const [categorias, setCategorias] = useState([]);
 
-  useEffect(() => {
-    const URL = window.location.hostname.includes('localhost')
-      ? 'http://localhost:8080/categorias'
-      : 'https://devsoutinhoflix.herokuapp.com/categorias';
-
-    fetch(URL).then(async (respostaDoServidor) => {
-      const resposta = await respostaDoServidor.json();
-      setCategorias(resposta);
+  React.useEffect(() => {
+    categoriasRepository.getAll().then((categoriasFromServer) => {
+      setCategorias(categoriasFromServer);
     });
   }, []);
 
@@ -77,11 +72,12 @@ function CadastroCategoria() {
             <span>Carregando...</span>
           </div>
         )}
-
+        {console.log(categorias)}
         {categorias.length > 0 && (
           <Table
-            data={categorias.map(({ id, titulo }) => {
-              return { id, titulo };
+            data={categorias.map(({ id, titulo, link_extra }) => {
+              const { text } = link_extra;
+              return { id, titulo, text };
             })}
             head={{
               titulo: 'Nome',
@@ -96,5 +92,3 @@ function CadastroCategoria() {
     </PageDefault>
   );
 }
-
-export default CadastroCategoria;

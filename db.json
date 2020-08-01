@@ -30,7 +30,11 @@
     {
       "id": 4,
       "titulo": "Filmes",
-      "cor": "orange"
+      "cor": "orange",
+      "link_extra": {
+        "text": "",
+        "url": "https://www.alura.com.br/cursos-online-mobile"
+      }
     },
     {
       "id": 5,
