@@ -5,6 +5,7 @@ import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
 import categoriasRepository from '../../../repositories/categories';
+import Table from '../../../components/Table';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -20,7 +21,7 @@ function CadastroCategoria() {
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost')
       ? 'http://localhost:8080/categorias'
-      : 'https://techflix-backend.herokuapp.com/categorias';
+      : 'https://devsoutinhoflix.herokuapp.com/categorias';
 
     fetch(URL).then(async (respostaDoServidor) => {
       const resposta = await respostaDoServidor.json();
@@ -39,11 +40,8 @@ function CadastroCategoria() {
         <form
           onSubmit={function handleSubmit(infosDoEvento) {
             infosDoEvento.preventDefault();
-
             categoriasRepository.createCategory(values);
-
             setCategorias([...categorias, values]);
-
             clearForm();
           }}
         >
@@ -80,11 +78,18 @@ function CadastroCategoria() {
           </div>
         )}
 
-        <ul>
-          {categorias.map((categoria) => (
-            <li key={`${categoria}${categoria.id}`}>{categoria.titulo}</li>
-          ))}
-        </ul>
+        {categorias.length > 0 && (
+          <Table
+            data={categorias.map(({ id, titulo }) => {
+              return { id, titulo };
+            })}
+            head={{
+              titulo: 'Nome',
+              edit: 'Editar',
+              remove: 'Remover',
+            }}
+          />
+        )}
 
         <Link to="/">Ir para home</Link>
       </div>
