@@ -1,0 +1,37 @@
+.btn-save {
+  background: var(--primary);
+  width: 180px;
+  height: 54px;
+  border: none;
+  margin: 5px 15px 20px 0;
+}
+
+.btn-clear {
+  background: var(--blackLighter);
+  width: 180px;
+  height: 54px;
+  border: none;
+  margin: 5px 15px 20px 0;
+}
+
+.btn-edit{
+  text-decoration: none;
+}
+
+.btn-edit:hover{
+  color: var(--backEnd);
+}
+
+.btn-delete{
+  text-decoration: none;
+}
+
+.btn-delete:hover{
+  color: red;
+}
+
+.disabled{
+  pointer-events: none;
+  cursor: none;
+  opacity: 0.6;
+}

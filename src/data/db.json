@@ -13,10 +13,10 @@
       "descricao": "Cursos de Back End na Alura"
     },
     {
+      "id": 3,
       "titulo": "Tripulação",
       "cor": "#b6b101",
-      "descricao": "As tripulações do one piece",
-      "id": 3
+      "descricao": "As tripulações do one piece"
     }
   ],
   "videos": [

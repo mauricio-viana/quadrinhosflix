@@ -52,6 +52,7 @@ const Input = styled.input`
   border-radius: 4px;
   transition: border-color 0.3s;
 
+
   &:focus {
     border-bottom-color: var(--primary);
   }

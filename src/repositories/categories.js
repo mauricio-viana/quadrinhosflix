@@ -26,13 +26,13 @@ function getAllWithVideos() {
   );
 }
 
-function create(categoria) {
+function create(data) {
   return fetch(URL_CATEGORIES, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(categoria),
+    body: JSON.stringify(data),
   }).then(async (responseServer) => {
     if (responseServer.ok) {
       const response = await responseServer.json();
@@ -43,8 +43,27 @@ function create(categoria) {
   });
 }
 
-export default {
-  getAllWithVideos,
-  getAll,
-  create,
-};
+function remove(id) {
+  return fetch(`${URL_CATEGORIES}/${id}`, {
+    method: 'DELETE',
+  })
+}
+
+function update(data){
+  return fetch(`${URL_CATEGORIES}/${data.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  }).then(async (responseServer) => {
+    if (responseServer.ok) {
+      const response = await responseServer.json();
+      return response;
+    }
+
+    throw new Error('Não foi possível atualizar os dados');
+  });
+}
+
+export default { getAllWithVideos, getAll, create, remove, update };

@@ -7,20 +7,23 @@ import Button from '../../../components/Button';
 import videosRepository from '../../../repositories/videos';
 import categoriasRepository from '../../../repositories/categories';
 
+const initialValues ={
+  titulo: '',
+  categoria: '',
+  imagem: '',
+  cor: '#b6b101',
+  link_extra: {
+    text: '',
+    url: '',
+  },
+}
+
 export default function CadastroVideo() {
   const history = useHistory();
   const [categorias, setCategorias] = useState([]);
 
   const categoryTitles = categorias.map(({ titulo }) => titulo);
-  const { handleChange, values } = useForm({
-    titulo: '',
-    categoria: '',
-    cor: '#b6b101',
-    link_extra: {
-      text: '',
-      url: '',
-    },
-  });
+  const { handleChange, values } = useForm(initialValues);
 
   React.useEffect(() => {
     categoriasRepository.getAll().then((categoriasFromServer) => {
@@ -54,26 +57,41 @@ export default function CadastroVideo() {
 
       <form onSubmit={handleSubmitForm}>
         <FormField
-          label="Título do Vídeo"
+          label="Título"
           name="titulo"
           value={values.titulo}
           onChange={handleChange}
         />
 
         <FormField
-          label="URL"
+          label="Link do vídeo"
           name="url"
           value={values.url}
           onChange={handleChange}
         />
 
         <FormField
-          label="Categoria"
+          label="Link da imagem do vídeo"
+          name="url"
+          value={values.imagem}
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="Escolha uma categoria"
           name="categoria"
           value={values.categoria}
           onChange={handleChange}
           suggestions={categoryTitles}
         />
+
+        <FormField
+            label="Descrição"
+            type="textarea"
+            name="descricao"
+            value={values.descricao}
+            onChange={handleChange}
+          />
 
         <Button type="submit">Cadastrar</Button>
       </form>

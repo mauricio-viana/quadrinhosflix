@@ -3,20 +3,23 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import '../../../components/Button/ButtonStyle.css';
 import useForm from '../../../hooks/useForm';
 import categoriasRepository from '../../../repositories/categories';
 import Table from '../../../components/Table';
 
-const INITIAL_VALUES = {
+const initialValues = {
   titulo: '',
-  cor: '#b6b101',
+  cor: '#FF8C00',
   descricao: '',
 };
 
-export default function CadastroCategoria() {
-  const { handleChange, values, clearForm } = useForm(INITIAL_VALUES);
+const initialEdit = {isEdit: false, id: 0};
 
-  const [categorias, setCategorias] = useState([]);
+export default function CadastroCategoria() {
+  const { handleChange, values, clearForm, editForm } = useForm(initialValues);
+  const [ edit, setEdit] = useState(initialEdit);
+  const [ categorias, setCategorias] = useState([]);
 
   React.useEffect(() => {
     categoriasRepository.getAll().then((categoriasFromServer) => {
@@ -24,26 +27,63 @@ export default function CadastroCategoria() {
     });
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    categoriasRepository
-      .create({
-        titulo: values.titulo,
-        cor: values.cor,
-        descricao: values.descricao,
-      })
-      .then(() => {
-        setCategorias([...categorias, values]);
-        clearForm();
-      });
+
+    try {
+      const { isEdit, id } = edit;
+      const { titulo, cor, descricao } = values;
+
+      const categoria = isEdit 
+      ? await categoriasRepository
+      .update({ id, titulo, cor, descricao }) 
+      : await categoriasRepository
+      .create({ titulo, cor, descricao });
+
+      const atualizarLista = isEdit
+       ? categorias.filter((data) => data.id !== Number(id))
+       : Object.assign([], categorias);
+
+       setCategorias([...atualizarLista, categoria]);
+       clearForm();
+       setEdit(initialEdit);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const handleClear = (event) => {
+    event.preventDefault();
+    clearForm();
+    setEdit(initialEdit);
+  };
+
+  const handleEdit =(event)=>{
+    const {id} = event.target;
+    const category = categorias.find((data)=> data.id === parseInt(id))
+    
+    setEdit({ isEdit: true, id})
+    editForm(category)
+  }
+
+  const handleDelete = async(event)=>{
+    const {id} = event.target;
+     try {
+        await categoriasRepository.remove(id);
+
+        const atualizaCategorias = categorias.filter((data) => data.id !== parseInt(id))
+        setCategorias(atualizaCategorias)
+     } catch (error) {
+        console.log(error)
+     }
+  }
 
   return (
     <PageDefault>
       <div style={{ padding: 50, paddingTop: 0 }}>
-        <h1>Cadastro de Categoria</h1>
+        <h1>{ edit.isEdit ? 'Alteração de Cadastro' : 'Cadastro de Categoria' }</h1>
 
-        <form onSubmit={handleSubmit}>
+        <form>
           <FormField
             label="Nome da Categoria"
             type="text"
@@ -68,7 +108,12 @@ export default function CadastroCategoria() {
             onChange={handleChange}
           />
 
-          <Button>Salvar</Button>
+          <Button className="btn-save" onClick={handleSubmit}>
+            Salvar
+          </Button>
+          <Button className="btn-clear" onClick={handleClear}>
+            Limpar
+          </Button>
         </form>
 
         {categorias.length === 0 && (
@@ -80,10 +125,17 @@ export default function CadastroCategoria() {
         {categorias.length > 0 && (
           <Table
             data={categorias.map(({ id, titulo, descricao }) => {
-              return { id, titulo, descricao };
+              return {
+                id,
+                titulo,
+                descricao,
+                edit: <Link to="#!" id={id} className="btn-edit" onClick={handleEdit}>Editar</Link> ,
+                remove: <Link to="#!" id={id} className={`btn-delete ${edit.isEdit && 'disabled'}`}  onClick={handleDelete}>Remover</Link>,
+              };
             })}
             head={{
               titulo: 'Nome',
+              descricao: 'Descrição',
               edit: 'Editar',
               remove: 'Remover',
             }}
