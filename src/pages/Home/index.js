@@ -29,7 +29,7 @@ export default function Home() {
               <BannerMain
                 videoTitle={initialData[0].videos[0].titulo}
                 url={initialData[0].videos[0].url}
-                videoDescription={initialData[0].videos[0].description}
+                videoDescription={initialData[0].videos[0].descricao}
               />
               <Carousel ignoreFirstVideo category={initialData[0]} />
             </div>

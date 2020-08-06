@@ -2,101 +2,212 @@
   "categorias": [
     {
       "id": 1,
-      "titulo": "Front End",
+      "titulo": "Quadrinhos?",
       "cor": "#6BD1FF",
-      "descricao": "Formação de Front End na Alura"
+      "descricao": "Conteúdos sobre os quadrinhos"
     },
     {
       "id": 2,
-      "titulo": "Back End",
-      "cor": "#00C86F",
-      "descricao": "Cursos de Back End na Alura"
+      "titulo": "Previsões e curiosidades",
+      "cor": "#1548a9",
+      "descricao": "Youtubers com teorias sobre os destinos dos animes e desvendando mistérios."
     },
     {
       "id": 3,
-      "titulo": "Tripulação",
-      "cor": "#b6b101",
-      "descricao": "As tripulações do one piece"
+      "titulo": "Batalhas Épicas",
+      "cor": "#00C86F",
+      "descricao": "Listas das batalhas épicas dos animes"
     }
   ],
   "videos": [
     {
       "id": 1,
       "categoriaId": 1,
-      "titulo": "SEO com React",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+      "titulo": "A DIFERENÇA ENTRE HQ, GIBI E MANGÁ",
+      "url": "https://www.youtube.com/watch?v=tyClx5w1ErM",
+      "descricao": "Entenda a diferença entre HQ, GIBI E MANGÁ."
     },
     {
       "id": 2,
       "categoriaId": 1,
-      "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
-      "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
+      "titulo": "COMO COMEÇAR A LER QUADRINHOS?",
+      "url": "https://www.youtube.com/watch?v=J-4bGJOBqio",
+      "descricao": ""
     },
     {
       "id": 3,
       "categoriaId": 1,
-      "titulo": "Aprenda React com curso - React para iniciantes",
-      "url": "https://www.youtube.com/watch?v=WRuEVrghkl4"
+      "titulo": "O DIA QUE O DR MANHATTAN DERROTOU TODA A DC",
+      "url": "https://www.youtube.com/watch?v=TF5Q4LqxQDA",
+      "descricao": ""
     },
     {
       "id": 4,
       "categoriaId": 1,
-      "titulo": "Componentização com VanillaJS #AluraMais",
-      "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+      "titulo": "BARBA BRANCA: O PIRATA QUE MORREU DE PÉ",
+      "url": "https://www.youtube.com/watch?v=SvJcHB5R-Dg",
+      "descricao": ""
     },
     {
       "id": 5,
       "categoriaId": 1,
-      "titulo": "Pare de chutar e aprenda a display: inline #01",
-      "url": "https://www.youtube.com/watch?v=5PS6ku8NzIE"
+      "titulo": "CRONOLOGIA: X-MEN - GUIA DE LEITURA",
+      "url": "https://www.youtube.com/watch?v=jBWORLynLv8",
+      "descricao": ""
     },
     {
       "id": 6,
       "categoriaId": 1,
-      "titulo": "Template String: Interpolando strings com JavaScript #AluraMais",
-      "url": "https://www.youtube.com/watch?v=ORI_HTXaIw0"
+      "titulo": "REVELADO! O ORIGEM DOS TITÃS: NÃO ERA O QUE VOCÊ PENSAVA",
+      "url": "https://www.youtube.com/watch?v=UjCxp1Zbsro",
+      "descricao": ""
     },
     {
       "id": 7,
       "categoriaId": 1,
-      "titulo": "Qual é a melhor linguagem de programação? #HipstersPontoTube",
-      "url": "https://www.youtube.com/watch?v=Uh-GNH-t89w"
+      "titulo": "10 HQs PARA COMEÇAR A LER MARVEL",
+      "url": "https://www.youtube.com/watch?v=1Hfv2BgBVLY",
+      "descricao": ""
     },
     {
       "id": 8,
       "categoriaId": 1,
-      "titulo": "Novidades do Angular v9",
-      "url": "https://www.youtube.com/watch?v=34uHo7hFmG0"
+      "titulo": "YU YU HAKUSHO: DIFERENÇAS MANGÁ VS ANIME ► CURIOSIDADES!",
+      "url": "https://www.youtube.com/watch?v=8Vqe6BhnSfc",
+      "descricao": ""
     },
     {
       "id": 9,
       "categoriaId": 2,
-      "titulo": "PERCURSO em NÍVEL em ÁRVORE BINÁRIA | Estruturas de Dados #14",
-      "url": "https://www.youtube.com/watch?v=UOK7nS2E9xM"
+      "titulo": "O MOTIVO DE RAYLEIGH E ODEN NÃO CONTAREM AO MUNDO SOBRE O SÉCULO PERDIDO-IM HAKUBA E MIHAWK",
+      "url": "https://www.youtube.com/watch?v=RlppdidjcCg",
+      "descricao": ""
     },
     {
       "id": 10,
       "categoriaId": 2,
-      "titulo": "Coders4Tips - S01E04: GitHub CLI - Uma Nova Experiência no Github!",
-      "url": "https://www.youtube.com/watch?v=6o6-bKOZOEY"
+      "titulo": "REVELADO QUEM É O PAI DE ZORO E A MORTE DE UM CHAPÉU DE PALHA CONFIRMADA? ONE PIECE",
+      "url": "https://www.youtube.com/watch?v=cQBwvjatvjA",
+      "descricao": ""
     },
     {
       "id": 11,
       "categoriaId": 2,
-      "titulo": "Programei 4 robôs que criam vídeos para mim no YouTube",
-      "url": "https://www.youtube.com/watch?v=kjhu1LEmRpY"
+      "titulo": "O SONHO DE LIBERDADE DE EREN (Shingeki no Kyojin | Mangá Reaction)",
+      "url": "https://www.youtube.com/watch?v=ZGiyMIOlx7Q&t=63s",
+      "descricao": ""
     },
     {
       "id": 12,
       "categoriaId": 2,
-      "titulo": "API: Dicionário do Programador",
-      "url": "https://www.youtube.com/watch?v=vGuqKIRWosk"
+      "titulo": "KAIDOU BOTADO PRA MAMAR BONITO MAS... | ONE PIECE",
+      "url": "https://www.youtube.com/watch?v=RiOlcCInmTk",
+      "descricao": ""
     },
     {
       "id": 13,
       "categoriaId": 2,
-      "titulo": "Usando Git Direito",
-      "url": "https://www.youtube.com/watch?v=6OokP-NE49k"
+      "titulo": "CONFIRMADO O HAKI AVANÇADO DE OBSERVAÇÃO EM LUFFY - PORQUE ELE NÃO USOU CONTRA KAIDO?ONE PIECE",
+      "url": "https://www.youtube.com/watch?v=14RGX5qNoio",
+      "descricao": ""
+    },
+    {
+      "id": 14,
+      "categoriaId": 2,
+      "titulo": "10 TEORIAS BIZARRAS SOBRE BOKU NO HERO!!",
+      "url": "https://www.youtube.com/watch?v=S7OJPmLXl48",
+      "descricao": ""
+    },
+    {
+      "id": 15,
+      "categoriaId": 3,
+      "titulo": "Goku Vs Jiren",
+      "url": "https://www.youtube.com/watch?v=HW42A4bae9w",
+      "descricao": ""
+    },
+    {
+      "id": 16,
+      "categoriaId": 3,
+      "titulo": "Kirishima and Fat Gum Combo | My Hero Academia",
+      "url": "https://www.youtube.com/watch?v=7pNHSM_Xbwc",
+      "descricao": ""
+    },
+    {
+      "id": 17,
+      "categoriaId": 3,
+      "titulo": "Ichigo vs. Ulquiorra - Bleach",
+      "url": "https://www.youtube.com/watch?v=j5ogxzAEdjw",
+      "descricao": ""
+    },
+    {
+      "id": 18,
+      "categoriaId": 3,
+      "titulo": "LUFFY VS KATAKURI FIGHT CLIMAX",
+      "url": "https://www.youtube.com/watch?v=2dDG6FDBZwk",
+      "descricao": ""
+    },
+    {
+      "id": 19,
+      "categoriaId": 3,
+      "titulo": "Naruto vs Sasuke",
+      "url": "https://www.youtube.com/watch?v=puEKUrB3oeI",
+      "descricao": ""
+    },
+    {
+      "id": 20,
+      "categoriaId": 3,
+      "titulo": "Gon vs Pitou | Hunter vs Hunter",
+      "url": "https://www.youtube.com/watch?v=99q9j6PRegQ",
+      "descricao": ""
+    },
+    {
+      "id": 21,
+      "categoriaId": 3,
+      "titulo": "Alucard vs Anderson Hellsing",
+      "url": "https://www.youtube.com/watch?v=Ncn-D9HxLVM",
+      "descricao": ""
+    },
+    {
+      "id": 22,
+      "categoriaId": 3,
+      "titulo": "SAITAMA vs BOROS, A BATALHA FINAL",
+      "url": "https://www.youtube.com/watch?v=QVL1n8MAJWo",
+      "descricao": ""
+    },
+    {
+      "id": 23,
+      "categoriaId": 3,
+      "titulo": "Mob vs Toichiro Full Fight",
+      "url": "https://www.youtube.com/watch?v=wOJy8cFv1ic&t=486s",
+      "descricao": ""
+    },
+    {
+      "id": 24,
+      "categoriaId": 3,
+      "titulo": "TANJIRO VS RUI | Demon Slayer",
+      "url": "https://www.youtube.com/watch?v=nmGK-ZDHtp8",
+      "descricao": ""
+    },
+    {
+      "id": 25,
+      "categoriaId": 3,
+      "titulo": "Deku vs Todoroki | My Hero Academia",
+      "url": "https://www.youtube.com/watch?v=wpOhT35YtWg",
+      "descricao": ""
+    },
+    {
+      "id": 26,
+      "categoriaId": 3,
+      "titulo": "MIDORIYA VS BAKUGOU | My Hero Academia",
+      "url": "https://www.youtube.com/watch?v=mGglxYvnKko",
+      "descricao": ""
+    },
+    {
+      "id": 27,
+      "categoriaId": 3,
+      "titulo": "LEVI VS TITAN BESTIAL",
+      "url": "https://www.youtube.com/watch?v=Y-xLlZgng_o",
+      "descricao": ""
     }
   ]
 }
